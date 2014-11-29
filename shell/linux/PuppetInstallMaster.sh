@@ -25,7 +25,7 @@ sudo yum -y install puppet-server
 sudo sh -c "echo * > /etc/puppet/autosign.conf"
 
 #move puppet.conf into place
-sudo mv /home/vagrant/puppet.conf /etc/puppet/puppet.conf
+sudo cp /home/vagrant/puppet/puppet.conf /etc/puppet/puppet.conf
 
 #start puppetmaster
 sudo /etc/init.d/puppetmaster restart

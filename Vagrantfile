@@ -1,6 +1,3 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -10,7 +7,7 @@ Vagrant.configure("2") do |config|
      master.vm.hostname= "puppet.localdomain"
      master.vm.synced_folder "puppet/modules", "/etc/puppet/modules"
      master.vm.synced_folder "puppet/manifests", "/etc/puppet/manifests"
-     master.vm.synced_folder "puppet/", "/home/vagrant/"
+     master.vm.synced_folder "puppet/", "/home/vagrant/puppet"
      
      master.vm.provider :virtualbox do |v, override|
        override.vm.network :private_network, ip: "192.168.0.6"
