@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 resources/installers/
+=======
+.vagrant
+resources
+>>>>>>> 0a15e641f0b4dd23e7ccdf78b20bfbb7675dc47a
