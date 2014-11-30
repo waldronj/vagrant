@@ -24,11 +24,14 @@ sudo yum -y install puppet-server
 # autosign on - never use this for production
 sudo sh -c "echo * > /etc/puppet/autosign.conf"
 
+sudo service puppet stop
+sudo service puppetmaster stop
 #move puppet.conf into place
 sudo cp /home/vagrant/puppet/puppet.conf /etc/puppet/puppet.conf
 
 #start puppetmaster
-sudo /etc/init.d/puppetmaster restart
+sudo service puppetmaster start
+sudo service puppet start
 
 # http://docs.puppetlabs.com/guides/installation.html#post-install
 sudo puppet resource service puppet ensure=running enable=true

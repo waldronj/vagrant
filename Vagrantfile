@@ -22,7 +22,6 @@ Vagrant.configure("2") do |config|
 
    config.vm.define "2k8" do |eight|
      eight.vm.box = "win-srv-2k8r2"
-     eight.vm.hostname = "win-srv-2k8r2"
      eight.vm.guest = :windows
      
      eight.vm.provider :virtualbox do |v, override|
@@ -36,7 +35,6 @@ Vagrant.configure("2") do |config|
   end
   config.vm.define "2k12" do |twelve|
     twelve.vm.box = "win-srv-2k12r2"
-    twelve.vm.hostname = "win-srv-2k12r2"
     twelve.vm.guest = :windows
 
     twelve.vm.provider :virtualbox do |v, override|
