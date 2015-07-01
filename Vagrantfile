@@ -3,7 +3,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure("2") do |config|
    config.vm.define "master" do |master|
-     master.vm.box = "puppetlabs/centos-6.5-64-nocm"
+     master.vm.box = "puppetlabs/centos-7.0-64-puppet"
      master.vm.hostname= "puppet.localdomain"
      master.vm.synced_folder "puppet/modules", "/etc/puppet/modules"
      master.vm.synced_folder "puppet/manifests", "/etc/puppet/manifests"
@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
        v.customize ["modifyvm", :id, "--memory", "2048"]
      end
     
-    master.vm.provision :shell, :path => "shell/linux/PuppetInstallMaster.sh"
+    #master.vm.provision :shell, :path => "shell/linux/PuppetInstallMaster.sh"
     master.vm.provision :shell, :inline => 'echo "192.168.0.6  puppet" >> /etc/hosts'
     end
 
