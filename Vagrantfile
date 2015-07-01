@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
     end
 
    config.vm.define "2k8" do |eight|
-     eight.vm.box = "win-srv-2k8r2"
+     eight.vm.box = "opentable/win-2008r2-standard-amd64-nocm"
      eight.vm.guest = :windows
      
      eight.vm.provider :virtualbox do |v, override|
@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     eight.vm.provision :shell, :path => "shell/windows/main.cmd"
   end
   config.vm.define "2k12" do |twelve|
-    twelve.vm.box = "win-srv-2k12r2"
+    twelve.vm.box = "opentable/win-2012r2-standard-amd64-nocm"
     twelve.vm.guest = :windows
 
     twelve.vm.provider :virtualbox do |v, override|
