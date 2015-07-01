@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
        v.customize ["modifyvm", :id, "--memory", "2048"]
      end
     
-    #master.vm.provision :shell, :path => "shell/linux/PuppetInstallMaster.sh"
+    master.vm.provision :shell, :path => "shell/linux/PuppetInstallMaster.sh"
     master.vm.provision :shell, :inline => 'echo "192.168.0.6  puppet" >> /etc/hosts'
     end
 
@@ -25,7 +25,6 @@ Vagrant.configure("2") do |config|
      eight.vm.guest = :windows
      
      eight.vm.provider :virtualbox do |v, override|
-       v.name = eight.vm.box
        v.gui = true
        override.vm.network :private_network, ip: "192.168.0.7"
        v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
@@ -38,11 +37,11 @@ Vagrant.configure("2") do |config|
     twelve.vm.guest = :windows
 
     twelve.vm.provider :virtualbox do |v, override|
-      v.name = twelve.vm.box
       v.gui = true
       override.vm.network :private_network, ip: "192.168.0.8"
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
     twelve.vm.provision :shell, :path => "shell/windows/main.cmd"
+
   end
 end
