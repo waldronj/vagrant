@@ -1,37 +1,14 @@
-#Puppet Master Install
-# http://docs.puppetlabs.com/guides/installation.html#red-hat-enterprise-linux-and-derivatives
+wget https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb
+sudo dpkg -i puppetlabs-release-pc1-trusty.deb
+sudo apt-get update
 
-# ensure the date/time is synced
-sudo ntpdate us.pool.ntp.org
+sudo apt-get install puppetserver -y
 
-# shut down firewall permanently
-sudo service iptables save
-sudo service iptables stop
-sudo chkconfig iptables off
+sudo service puppetserver stop
 
-# Set the hostname to puppet
-# sudo vim /etc/sysconfig/network
-sudo hostname puppet.localdomain
-sudo service network restart
+sudo cp /home/vagrant/resources/puppetserver /etc/default/puppetserver
+sudo cp /home/vagrant/resources/autosign.conf /etc/puppetlabs/puppet/autosign.conf
 
+sudo service puppetserver start
 
-# add the RPM
-# http://docs.puppetlabs.com/guides/puppetlabs_package_repositories.html#for-red-hat-enterprise-linux-and-derivatives
-sudo rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
-#sudo yum -y install puppet
-sudo yum -y install puppet-server
-
-# autosign on - never use this for production
-sudo sh -c "echo * > /etc/puppet/autosign.conf"
-
-sudo service puppet stop
-sudo service puppetmaster stop
-#move puppet.conf into place
-sudo cp /home/vagrant/puppet/puppet.conf /etc/puppet/puppet.conf
-
-#start puppetmaster
-sudo service puppetmaster start
-sudo service puppet start
-
-# http://docs.puppetlabs.com/guides/installation.html#post-install
-sudo puppet resource service puppet ensure=running enable=true
+export PATH=$PATH:/opt/puppetlabs/puppet/bin

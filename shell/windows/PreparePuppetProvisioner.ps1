@@ -13,7 +13,7 @@ if (!(Test-Path $PuppetEtcPath)) {
 }
 
 Copy-Item "c:\vagrant\puppet\Puppetfile" "$PuppetEtcPath"
-
+<#
 Push-Location "$PuppetEtcPath"
 Write-Host "Ensuring librarian puppet"
 try {
@@ -30,4 +30,4 @@ try {
 } finally {
     $ErrorActionPreference = "Continue";
     Pop-Location
-}
+}#>
